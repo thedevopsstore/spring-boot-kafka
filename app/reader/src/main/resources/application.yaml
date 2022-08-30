@@ -1,0 +1,27 @@
+server:
+  port: 8084
+spring:
+  datasource.url: jdbc:postgresql://localhost:5432/postgres
+  datasource.username: -placeholder-
+  datasource.password: -placeholder-
+  datasource.driverClassName: org.postgresql.Driver
+
+  jpa.hibernate.ddl-auto: validate
+
+# Actuator settings ##################################################
+management:
+  info.git.mode: full
+  server:
+    port: 8081
+    address: 0.0.0.0
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true

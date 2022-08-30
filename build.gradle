@@ -1,0 +1,98 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "$kotlinVersion"
+}
+
+apply plugin: "idea"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+version = "0.1.0"
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = 11
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = 11
+    }
+}
+
+subprojects {
+    group = "ch.demo"
+    version = rootProject.version
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    ext {
+        sourceEncoding = 'UTF-8'
+    }
+
+    apply plugin: "java"
+    apply plugin: "kotlin"
+
+    sourceCompatibility = 11.0
+    targetCompatibility = 11.0
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+        testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
+        testImplementation "org.assertj:assertj-core:3.19.0"
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+//        showStandardStreams = true
+        }
+        systemProperties = [
+                'junit.jupiter.execution.parallel.enabled'             : 'true',
+                'junit.jupiter.execution.parallel.mode.default'        : 'same_thread',
+                'junit.jupiter.execution.parallel.mode.classes.default': 'concurrent'
+        ]
+        maxHeapSize = "256m"
+    }
+}

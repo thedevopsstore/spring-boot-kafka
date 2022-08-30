@@ -1,0 +1,11 @@
+spring:
+  kafka:
+    bootstrap-servers: "192.168.1.115:30279"
+  datasource.url: jdbc:postgresql://localhost:5432/postgres
+  datasource.username: postgres
+  datasource.password: postgres
+
+management:
+  info.git.mode: full
+  server:
+    port: 8083

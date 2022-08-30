@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+# Actuator settings ##################################################
+management:
+  info.git.mode: full
+  server:
+    port: 8081
+    address: 0.0.0.0
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true

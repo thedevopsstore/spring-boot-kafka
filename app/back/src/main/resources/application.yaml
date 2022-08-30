@@ -1,0 +1,35 @@
+server:
+  port: 8082
+spring:
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092"
+    consumer:
+      group-id: "back-group-local"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties.spring.json.trusted.packages: "*"
+
+  datasource.url: jdbc:postgresql://localhost:5432/postgres
+  datasource.username: -placeholder-
+  datasource.password: -placeholder-
+  datasource.driverClassName: org.postgresql.Driver
+
+  jpa.hibernate.ddl-auto: update
+
+# Actuator settings ##################################################
+management:
+  info.git.mode: full
+  server:
+    port: 8083
+    address: 0.0.0.0
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      enabled: true
+    metrics:
+      enabled: true

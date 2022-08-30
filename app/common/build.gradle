@@ -1,0 +1,12 @@
+ext {
+    name = 'common'
+    description = 'DEMO common module'
+}
+
+dependencies {
+    api "org.slf4j:slf4j-api:1.7.28"
+
+    api "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion"
+}
