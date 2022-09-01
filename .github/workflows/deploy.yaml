@@ -30,25 +30,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          
-      
+           
       - name: Build and push front image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: {{ env.repo }}/front:latest
-
-      - name: Build and push back image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: app/back/src/main/docker/
-          push: true
-          tags: {{ env.repo }}/back:latest
-
-      - name: Build and push reader image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: app/reader/src/main/docker/
-          push: true
-          tags: {{ env.repo }}/reader:latest
+          tags: lwplapbs/front:latest
