@@ -56,7 +56,7 @@ jobs:
           tags: lwplapbs/reader:latest
 
       - name: 'Deploy'
-        uses: 'deliverybot/helm@v1.6.8'
+        uses: 'deliverybot/helm@v1'
         with:
           release: 'front'
           namespace: 'default'
