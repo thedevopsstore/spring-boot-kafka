@@ -1,0 +1,16 @@
+image:
+  repository: lwplapbs/back
+  tag:  "latest"
+  pullPolicy: Always
+
+
+appconfig: |-
+  server.port: 8080
+  ################### Kafka ##############################
+  spring:
+    kafka:
+      bootstrap-servers:  {{ kafka-bootstrap-goes here }}
+    datasource.url: jdbc:postgresql://front-app-postgres:5432/postgres
+    datasource.username: postgres
+    datasource.password: Welcome123
+  management.server.port: 8081

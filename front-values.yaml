@@ -1,0 +1,26 @@
+postgres:
+  enabled: true
+kafka:
+  enabled: true
+
+image:
+  repository: lwplapbs/front
+  tag:  "latest"
+  pullPolicy: Always
+
+service:
+  type: NodePort
+
+appconfig: |-
+  server.port: 8080
+  ################### Kafka ##############################
+  spring:
+    kafka:
+      bootstrap-servers:  front-app-kafka
+
+  ################### Logging settings ###################
+  logging:
+    level:
+      root: WARN
+      db.demo: INFO
+  management.server.port: 8081

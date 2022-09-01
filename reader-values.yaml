@@ -1,0 +1,16 @@
+image:
+  repository: lwplapbs/reader
+  tag:  "latest"
+  pullPolicy: Always
+
+service:
+  type: NodePort
+
+appconfig: |-
+  server.port: 8080
+  ################### Kafka ##############################
+  spring:
+    datasource.url: jdbc:postgresql://front-app-postgres:5432/postgres
+    datasource.username: postgres
+    datasource.password: Welcome123
+  management.server.port: 8081
