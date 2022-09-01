@@ -54,3 +54,17 @@ jobs:
           context: app/reader/src/main/docker/
           push: true
           tags: lwplapbs/reader:latest
+
+      - name: 'Deploy'
+        uses: 'deliverybot/helm@v1'
+        with:
+          release: 'front'
+          namespace: 'default'
+          chart: 'springboot'
+          value-files: >-
+          [
+            "front-values.yaml"
+          ]
+      env:
+        KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
+
