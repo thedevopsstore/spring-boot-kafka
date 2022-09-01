@@ -56,13 +56,8 @@ jobs:
           tags: lwplapbs/reader:latest
 
       - name: 'Deploy'
-        uses: 'deliverybot/helm@v1'
+        uses: WyriHaximus/github-action-helm3@v2
         with:
-          release: 'front'
-          namespace: 'default'
-          chart: 'springboot'
-          helm: helm3
-          value-files: "front-values.yaml"
-        env:
-          KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
+          exec: helm upgrade --install front ./springboot -f front-values.yaml
+          kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 
