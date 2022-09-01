@@ -56,11 +56,12 @@ jobs:
           tags: lwplapbs/reader:latest
 
       - name: 'Deploy'
-        uses: 'deliverybot/helm@v1'
+        uses: 'deliverybot/helm@v1.6.8'
         with:
           release: 'front'
           namespace: 'default'
           chart: 'springboot'
+          helm: helm3
           value-files: "front-values.yaml"
         env:
           KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG }}'
