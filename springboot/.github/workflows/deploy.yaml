@@ -40,12 +40,12 @@ jobs:
         with:
           context: "app/front/src/main/docker/"
           push: true
-          tags: ${{ env.repo }}/front:latest
+          tags: lwplapbs/front:latest
 
       - name: Build and push back image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: app/back/src/main/docker/
+          context: "app/back/src/main/docker/"
           push: true
           tags: ${{ env.repo }}/back:latest
 
