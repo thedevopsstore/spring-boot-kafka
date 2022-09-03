@@ -37,9 +37,12 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+            - name: healthcheck
+              containerPort: 8081
+              protocol: TCP
           livenessProbe:
             httpGet:
-              path: /health
+              path: /actuator/health
               port: 8081
             initialDelaySeconds: 20
           resources:
