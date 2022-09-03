@@ -47,7 +47,7 @@ spec:
           {{- if .Values.appconfig }}            
           volumeMounts:
             - name: config
-              mountPath: /opt/app.conf
+              mountPath: /opt/
           {{- end }}
       volumes:
         {{- if .Values.appconfig }}

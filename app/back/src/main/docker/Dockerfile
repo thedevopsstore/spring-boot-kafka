@@ -9,4 +9,4 @@ ARG JAR_FILE=./back-${JAR_VERSION}.jar
 
 COPY ${JAR_FILE} /app.jar
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.config.location=/opt/app.conf"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.config.location=/opt/"]

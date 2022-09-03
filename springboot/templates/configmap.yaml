@@ -5,5 +5,5 @@ metadata:
   labels:
     {{- include "springboot.labels" . | nindent 4 }}
 data:
-  app.conf: |-
+  application.yaml: |-
 {{ .Values.appconfig | indent 4 }}
