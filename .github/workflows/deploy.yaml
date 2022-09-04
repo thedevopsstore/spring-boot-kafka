@@ -58,18 +58,18 @@ jobs:
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade --install front ./springboot -f front-values.yaml
+          exec: helm upgrade --install front-app ./springboot -f front-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade --install back ./springboot -f back-values.yaml
+          exec: helm upgrade --install back-app ./springboot -f back-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade --install reader ./springboot -f reader-values.yaml
+          exec: helm upgrade --install reader-app ./springboot -f reader-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 

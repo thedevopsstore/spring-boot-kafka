@@ -47,7 +47,13 @@ spec:
             initialDelaySeconds: 20
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.appconfig }}            
+          {{- if .Values.appconfig }}
+          env:
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.global.postgresql.secrets }}
+                  key: postgres-password         
           volumeMounts:
             - name: config
               mountPath: /opt/
